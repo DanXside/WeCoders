@@ -13,14 +13,6 @@
 $this->setFrameMode(true);
 ?>
 
-<?php
-
-echo '<pre>';
-	print_r($arResult);
-echo '</pre>';
-
-?>
-
 <?php if (!empty($arResult['ID'])) : ?>
 	<section class="who-area-are pad-90" id="about_us">
 		<div class="container">
@@ -115,18 +107,14 @@ echo '</pre>';
 
 							<!-- Tab panes -->
 							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane fade in active" id="analytyc">
-									<p>Перед началом работ будет проведен этап аналитики, в котором будут определены ваши предпочтения по дизайну, функционалу и контенту.</p>
-								</div>
-								<div role="tabpanel" class="tab-pane fade" id="design">
-									<p>Следующим этапом будет отрисовка дизайна лендинга, а затем внесение правок. </p>
-								</div>
-								<div role="tabpanel" class="tab-pane fade" id="progging">
-									<p>После отрисовки макетов будет произведена верстка и программирование, а также тестирование работоспособности.</p>
-								</div>
-								<div role="tabpanel" class="tab-pane fade" id="settings">
-									<p>На последнем этапе сайт будет загружен на хостинг, будет настроен домен и произведены все необходимые настройки хотинга.</p>
-								</div>
+								<?php $ind = 0; ?>
+								<?php foreach ($arResult['PROPERTIES']['stage']['VALUE'] as $keyStage => $valStage) : ?>
+									<div role="tabpanel" class="tab-pane fade <?= ($ind++ === 0) ? 'in active' : ''; ?>" id="<?= $keyStage; ?>">
+										<p>
+											<?= $valStage; ?>
+										</p>
+									</div>
+								<?php endforeach; ?>
 							</div>
 						</div>
 					<?php endif; ?>
