@@ -2,11 +2,14 @@
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 $APPLICATION->SetTitle("Услуги");
 $APPLICATION->SetPageProperty('title', 'Услуги | We Coders');
-?><?$APPLICATION->IncludeComponent(
+$APPLICATION->AddChainItem($APPLICATION->GetTitle(), $APPLICATION->GetCurDir());
+?>
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news",
 	"services",
 	Array(
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -58,7 +61,7 @@ $APPLICATION->SetPageProperty('title', 'Услуги | We Coders');
 		"SEF_URL_TEMPLATES" => Array("detail"=>"#ELEMENT_CODE#/","news"=>"","section"=>""),
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "Y",
-		"SET_TITLE" => "N",
+		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "SORT",
 		"SORT_BY2" => "SORT",
@@ -75,6 +78,7 @@ $APPLICATION->SetPageProperty('title', 'Услуги | We Coders');
 		"USE_SHARE" => "N"
 	)
 );?>
+
 <?
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');
 ?>
