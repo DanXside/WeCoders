@@ -2,11 +2,13 @@
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 $APPLICATION->SetTitle("Портфолио");
 $APPLICATION->SetPageProperty('title', 'Портфолио | We Coders');
-?><?$APPLICATION->IncludeComponent(
+$APPLICATION->AddChainItem($APPLICATION->GetTitle(), $APPLICATION->GetCurDir());
+?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news",
 	"portfolio",
 	Array(
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -59,7 +61,7 @@ $APPLICATION->SetPageProperty('title', 'Портфолио | We Coders');
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "Y",
 		"SET_TITLE" => "Y",
-		"SHOW_404" => "N",
+		"SHOW_404" => "Y",
 		"SORT_BY1" => "SORT",
 		"SORT_BY2" => "ACTIVE_FROM",
 		"SORT_ORDER1" => "ASC",

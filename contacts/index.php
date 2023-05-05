@@ -2,14 +2,33 @@
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 $APPLICATION->SetTitle('Контакты');
 $APPLICATION->SetPageProperty('title', 'Контакты | We Coders');
+$APPLICATION->AddChainItem($APPLICATION->GetTitle(), $APPLICATION->GetCurDir());
 ?> 
 
 <div class="contact-form pt-90 pb-30">
     <div class="container">
         <div class="row">
             <div class="section-heading text-center mb-70">
-                <h2>Нужен классный сайт?</h2>
-                <p>Оставьте заявку в форме ниже и мы всё сделаем!</p>
+                <h2>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        Array(
+                            "AREA_FILE_SHOW" => "page",
+                            "AREA_FILE_SUFFIX" => "contacts_title",
+                        )
+                    );?>
+                </h2>
+                <p>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        Array(
+                            "AREA_FILE_SHOW" => "page",
+                            "AREA_FILE_SUFFIX" => "contacts_subtitle",
+                        )
+                    );?>
+                </p>
             </div>
         </div>
         <div class="row">
@@ -22,20 +41,47 @@ $APPLICATION->SetPageProperty('title', 'Контакты | We Coders');
                                 <div class="address">
                                     Мы находимся по адресу:
                                     <hr>
-                                    <p>г. Тюмень, ул. Республики 94, офис 23</p>
+                                    <p>
+                                        <?$APPLICATION->IncludeComponent(
+                                            "bitrix:main.include",
+                                            "",
+                                            Array(
+                                                "AREA_FILE_SHOW" => "page",
+                                                "AREA_FILE_SUFFIX" => "contacts_address",
+                                            )
+                                        );?>
+                                    </p>
                                 </div>
                             </li>
                             <li>
                                 <i aria-hidden="true" class="fa fa-phone brand-color"></i>
                                 <div class="phone">
-                                    <p>8-123-456-7899</p>
+                                    <p>
+                                        <?$APPLICATION->IncludeComponent(
+                                            "bitrix:main.include",
+                                            "",
+                                            Array(
+                                                "AREA_FILE_SHOW" => "page",
+                                                "AREA_FILE_SUFFIX" => "contacts_phone",
+                                            )
+                                        );?>
+                                    </p>
                                 </div>
                             </li>
                             <li>
                                 <i class="fa fa-envelope brand-color"></i>
                                 <div class="mail">
                                     <p>
-                                        <a href="mailto:#">wecoders@wecodres.com</a>
+                                        <a href="mailto:#">
+                                            <?$APPLICATION->IncludeComponent(
+                                            "bitrix:main.include",
+                                            "",
+                                            Array(
+                                                "AREA_FILE_SHOW" => "page",
+                                                "AREA_FILE_SUFFIX" => "contacts_email",
+                                            )
+                                            );?>
+                                        </a>
                                     </p>
                                 </div>
                             </li>

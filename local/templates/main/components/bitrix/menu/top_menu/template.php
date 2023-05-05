@@ -5,21 +5,37 @@
 		<nav id="primary-menu">
 			<ul class="main-menu text-right">
 				<?php foreach($arResult as $item): ?>
-					<?php if($item['SELECTED']): ?>
 						<li>
-							<a href="<?= $item['LINK'] ?>" style="color: #777777"><?= $item['TEXT'] ?></a>
+							<a href="<?= $item['LINK'] ?>"<?= $item["SELECTED"] ? 'style="color: #009cbb"' : ''; ?> >
+								<?= $item['TEXT'] ?>
+								<?php if (!empty($item['subitems'])) : ?>
+									<span class="indicator"><i class="fa fa-angle-down"></i></span></a>
+								<?php endif; ?>
+							</a>
+							<?php if (!empty($item['subitems'])) : ?>
+								<ul class="dropdown">
+									<?php foreach ($item['subitems'] as $subitem) : ?>
+										<li>
+											<a href="<?= $subitem['LINK']; ?>"><?= $subitem['TEXT'] ?? ''; ?></a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
 						</li>
-					<?php else: ?>
-						<li>
-							<a href="<?= $item['LINK'] ?>"><?= $item['TEXT'] ?></a>
-						</li>
-					<?php endif; ?>
-					
 				<?php endforeach; ?>
 			</ul>
 		</nav>
 	</div>
 <?php endif;?>
+
+<!--?php
+
+print_r($arResult);
+
+?>
+
+
+
 
 	
 
